@@ -15,9 +15,11 @@ void ntp_init(){
 
 void ntp_loop(){
   timeClient.update();
+  Serial.println(timeClient.getFormattedTime());
   int hour = timeClient.getHours();
   int minutes = timeClient.getMinutes();
-  if(hour == 8 && minutes >0 && minutes < 5){
+  int seconds = timeClient.getSeconds();
+  if(hour == 18 && minutes >=30 && minutes <= 31 && seconds <= 50){
     TurnON(&state);
   }else{
     TurnOFF(&state);
